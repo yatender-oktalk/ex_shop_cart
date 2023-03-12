@@ -21,7 +21,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## Commands
 ```elixir
-  alias ExShopCart.Commanded.{OpenBankAccount, BankAccountOpened, BankAccount}
+  alias ExShopCart.Commanded.{OpenAccount, BankAccountOpened, BankAccount}
   {:ok, _pid} = BankApp.start_link()
-  BankApp.dispatch(%OpenBankAccount{account_number: "ACC123456", initial_balance: 1_000})
+  BankApp.dispatch(%OpenAccount{account_number: "ACC123456", initial_balance: 1_000})
 ```

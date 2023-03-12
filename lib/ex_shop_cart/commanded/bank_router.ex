@@ -1,9 +1,10 @@
 defmodule ExShopCart.Commanded.BankRouter do
   use Commanded.Commands.Router
-  alias ExShopCart.Commanded.{OpenBankAccount, DepositMoney, BankAccount}
+  alias ExShopCart.Commanded.{OpenAccount, DepositMoney, BankAccount}
 
-  dispatch(OpenBankAccount,
-    to: BankAccount,
+  dispatch(OpenAccount,
+    to: OpenAccountHandler,
+    aggregate: BankAccount,
     identity: :account_number
   )
 
@@ -12,4 +13,8 @@ defmodule ExShopCart.Commanded.BankRouter do
     aggregate: BankAccount,
     identity: :account_number
   )
+
+  ### if we want to skip the handler and send directly to the Aggregate
+  # identify BankAccount, by: :account_number
+  # dispatch [OpenAccount, DepositMoney], to: BankAccount
 end

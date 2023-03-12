@@ -17,3 +17,11 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+## Commands
+```elixir
+  alias ExShopCart.Commanded.{OpenBankAccount, BankAccountOpened, BankAccount}
+  {:ok, _pid} = BankApp.start_link()
+  BankApp.dispatch(%OpenBankAccount{account_number: "ACC123456", initial_balance: 1_000})
+```
